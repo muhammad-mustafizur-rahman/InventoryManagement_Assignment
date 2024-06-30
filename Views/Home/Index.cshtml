@@ -1,0 +1,123 @@
+﻿@using InventoryManagement_Assignment.Models;
+@{
+    ViewBag.Title = "Home Page";
+}
+
+
+<div class="row">
+    <div class="col col-4">
+        <div class="card text-center">
+            <div class="card-header">
+                <b>Equipment  List</b>
+            </div>
+            <div class="card-body">
+                <div style="border: 1px solid #808080; max-height: 500px; overflow-y: auto">
+                    <table style="width: 100%">
+                        <tr style="background: lightblue">
+                            <th style="display: none">EquipmentID</th>
+                            <th>Name</th>
+                            <th>Count</th>
+                            <th>Date</th>
+                        </tr>
+                        @{
+                            List<Equipment> equipmentList = Equipment.LstEquipment();
+                            foreach (Equipment obj in equipmentList)
+                            {
+                                <tr>
+                                    <td style="display: none">@obj.EquipmentID</td>
+                                    <td>@obj.Name</td>
+                                    <td>@obj.Count</td>
+                                    <td>@obj.EntryDate</td>
+
+                                </tr>
+                            }
+                        }
+                    </table>
+                </div>
+
+            </div>
+            <div class="card-footer text-muted">
+                Last Updated: 2 days ago
+            </div>
+        </div>
+    </div>
+
+
+    <div class="col col-4">
+        <div class="card text-center">
+            <div class="card-header">
+                <b>Member  List</b>
+            </div>
+            <div class="card-body">
+                <div style="border: 1px solid #808080; max-height: 500px; overflow-y: auto">
+                    <table style="width: 100%">
+                        <tr style="background: lightblue">
+                            <th style="display: none">EquipmentID</th>
+                            <th>Name</th>
+                            <th>Designation</th>
+                            <th>MobileNumber</th>
+                        </tr>
+                        @{
+                            List<Member> memberList = Member.LstMember();
+                            foreach (Member obj in memberList)
+                            {
+                                <tr>
+                                    <td style="display: none">@obj.MemberID</td>
+                                    <td>@obj.MemberName</td>
+                                    <td>@obj.MemberDesignation</td>
+                                    <td>@obj.MobileNumber</td>
+
+                                </tr>
+                            }
+                        }
+                    </table>
+                </div>
+
+            </div>
+            <div class="card-footer text-muted">
+                Last Updated: 2 days ago
+            </div>
+        </div>
+    </div>
+
+
+    <div class="col col-4">
+        <div class="card text-center">
+            <div class="card-header">
+                <b> Assigned Equipment </b>
+            </div>
+            <div class="card-body">
+                <div style="border: 1px solid #808080; max-height: 500px; overflow-y:auto">
+                    <table style="width: 100%">
+                        <tr style="background: lightblue">
+                            <th style="display: none">EquipmentID</th>
+                            <th>Name</th>
+                            <th>MemberName</th>
+                            <th>MobileNumber</th>
+                        </tr>
+                        @{
+                            List<Equipment> assignedList = Equipment.LstAssignedEquipment();
+                            foreach (Equipment obj in assignedList)
+                            {
+                                <tr>
+                                    <td style="display: none">@obj.EquipmentID</td>
+                                    <td>@obj.Name</td>
+                                    <td>@obj.Member.MemberName</td>
+                                    <td>@obj.Member.MobileNumber</td>
+
+                                </tr>
+                            }
+                        }
+                    </table>
+                </div>
+
+            </div>
+            <div class="card-footer text-muted">
+                Last Updated: 2 days ago
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
